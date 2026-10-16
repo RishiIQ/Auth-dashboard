@@ -1,0 +1,26 @@
+import { useState } from 'react';
+
+export default function ChangePasswordScreen({ setCurrentScreen, handleChangePassword, loading }) {
+  const [currentPassword, setCurrentPassword] = useState('');
+  const [newPassword, setNewPassword] = useState('');
+
+  return (
+    <div className="max-w-md mx-auto bg-emerald-100/20 border border-slate-200 p-8 rounded-2xl shadow-xl">
+      <h2 className="text-xl font-bold text-slate-900 mb-6">Change Password</h2>
+      <form onSubmit={(e) => handleChangePassword(e, currentPassword, newPassword)} className="space-y-4">
+        <div>
+          <label className="block text-xs font-bold text-slate-600 uppercase mb-1">Current Password</label>
+          <input type="password" value={currentPassword} onChange={(e) => setCurrentPassword(e.target.value)} placeholder="••••••••" className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2.5 text-sm focus:outline-none focus:border-green-600" required />
+        </div>
+        <div>
+          <label className="block text-xs font-bold text-slate-600 uppercase mb-1">New Password (Min 6 chars)</label>
+          <input type="password" value={newPassword} onChange={(e) => setNewPassword(e.target.value)} placeholder="••••••••" className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2.5 text-sm focus:outline-none focus:border-green-600" required />
+        </div>
+        <div className="flex gap-3 pt-2">
+          <button type="button" onClick={() => setCurrentScreen('profile')} className="flex-1 bg-slate-100 text-slate-700 font-bold py-2.5 rounded-xl text-xs cursor-pointer">Cancel</button>
+          <button type="submit" disabled={loading} className="flex-1 bg-green-600 text-white font-bold py-2.5 rounded-xl text-xs cursor-pointer">Update</button>
+        </div>
+      </form>
+    </div>
+  );
+}

@@ -1,0 +1,65 @@
+@import "tailwindcss";
+
+@theme {
+  /* ---- Paper & ink palette (light only, flat — no gradients) ---- */
+  --color-paper: #f6f3ea;
+  --color-surface: #fdfcf8;
+  --color-surface-2: #efeadd;
+  --color-ink: #211f1a;
+  --color-ink-2: #45413a;
+  --color-muted: #7b756a;
+  --color-line: #e3ddcf;
+  --color-line-2: #cfc7b4;
+  --color-accent: #b4441f;
+  --color-accent-hover: #9c3917;
+  --color-accent-tint: #f7ece6;
+  --color-good: #3e6b4e;
+  --color-good-tint: #ecf2ed;
+  --color-warn: #8a6a24;
+  --color-warn-tint: #f7f1e2;
+  --color-danger-tint: #f8ece7;
+
+  /* ---- Type ---- */
+  --font-display: "Fraunces", Georgia, "Times New Roman", serif;
+  --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+  }
+
+  /* Crisp, visible focus ring everywhere — keyboard users first */
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+
+  ::selection {
+    background-color: var(--color-accent);
+    color: #fff;
+  }
+
+  /* Checkboxes & radios pick up the accent instead of browser green */
+  input[type='checkbox'],
+  input[type='radio'] {
+    accent-color: var(--color-accent);
+  }
+}
+
+/* Shared micro-label: mono, tracked, uppercase — the console's voice */
+@utility label-micro {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
